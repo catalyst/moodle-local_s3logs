@@ -77,7 +77,7 @@ function local_s3logs_should_tasks_run() {
 
     $config = get_local_s3logs_config();
 
-    if (isset($confgi->enabletasks) && $config->enabletasks) {
+    if (isset($config->enabletasks) && $config->enabletasks) {
 
         return true;
     }
