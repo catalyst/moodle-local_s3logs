@@ -79,6 +79,18 @@ class s3_client implements object_client {
     }
 
     /**
+     * Returns S3 file path to use with php file function.
+     *
+     * @param string $filename filename used as key in S3.
+     *
+     * @return string full path to S3 object.
+     */
+    public function get_fullpath($filename) {
+
+        return "s3://{$this->bucket}/{$filename}";
+    }
+
+    /**
      * Tests connection to S3 and bucket since there is no check connection in the AWS API.
      * We use list buckets instead and check that the bucket is in the list.
      *
