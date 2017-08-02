@@ -24,6 +24,7 @@
 
 $string['pluginname'] = 'Moodle to Amazon S3 Log Archiver';
 $string['settings:archivesettingsheader'] = 'Log Archive Settings';
+$string['archive_task'] = 'Moodle to Amazon S3 Log archive task';
 $string['settings:awsheader'] = 'Amazon S3 Settings';
 $string['settings:bucket'] = 'Bucket';
 $string['settings:bucket_help'] = 'Amazon S3 bucket to store files in.';
