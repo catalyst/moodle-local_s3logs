@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 
-/*
+/**
  * Helper function to set config for the plugin.
  *
  * @param stdClass $config Object containing the configuration.
@@ -62,9 +62,8 @@ function get_local_s3logs_config() {
     // Override the defaults if already set.
     foreach ($storedconfig as $key => $value) {
 
-        $config-> key = $value;
+        $config->$key = $value;
     }
-
     return $config;
 }
 

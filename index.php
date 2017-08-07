@@ -38,7 +38,7 @@ $form = new settings_form(null, array('config' => $config));
 
 if ($data = $form->get_data()) {
 
-    set_local_s3logs_data($data);
+    set_local_s3logs_config($data);
 
     redirect(new moodle_url('/local/s3logs/index.php'));
 }
