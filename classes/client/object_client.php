@@ -15,22 +15,21 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Settings for local_s3logs
+ * Object client interface.
  *
- * @package     local
- * @subpackage  s3logs
- * @author      Marcus Boon<marcus@catalyst-au.net>
+ * @package   tool_objectfs
+ * @author    Kenneth Hendricks <kennethhendricks@catalyst-au.net>
+ * @copyright Catalyst IT
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+namespace local_s3logs\client;
 
 defined('MOODLE_INTERNAL') || die();
 
-if ($hassiteconfig) {
-
-    $externalpage = new admin_externalpage(
-        'local_s3logs_settings',
-        get_string('pluginname', 'local_s3logs'),
-        new moodle_url('/local/s3logs/index.php')
-    );
-
-    $ADMIN->add('localplugins', $externalpage);
+interface object_client {
+    public function __construct($config);
+    public function register_stream_wrapper();
+    public function test_connection();
+    public function test_permissions();
 }

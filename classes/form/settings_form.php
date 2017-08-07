@@ -62,10 +62,10 @@ class settings_form extends \moodleform {
 		$mform->addElement('advcheckbox', 'enabletasks', get_string('settings:enabletasks', 'local_s3logs'));
 		$mform->addHelpButton('enabletasks', 'settings:enabletasks', 'local_s3logs');
 
-        $mform->addElement('duration', 'maxtaskruntime', get_string('setings:maxtaskruntime', 'local_s3logs'));
+        $mform->addElement('duration', 'maxtaskruntime', get_string('settings:maxtaskruntime', 'local_s3logs'));
         $mform->addHelpButton('maxtaskruntime', 'settings:maxtaskruntime', 'local_s3logs');
         $mform->disabledIf('maxtaskruntime', 'enabletasks');
-        $mfrom->setType('maxtaskruntime', PARAM_INT);
+        $mform->setType('maxtaskruntime', PARAM_INT);
 
 		return $mform;
 	}

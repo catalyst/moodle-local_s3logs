@@ -22,10 +22,10 @@
  * @author      Marcus Boon<marcus@catalyst-au.net>
  */
 
-defined('MOODLE_INTERAL') || die();
+defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017062100;     // The current plugin version (Date: YYYYMMDDXX).
-$plugin->release   = 2017062100;     // Same as version.
+$plugin->version   = 2017062105;     // The current plugin version (Date: YYYYMMDDXX).
+$plugin->release   = 2017062105;     // Same as version.
 $plugin->requires  = 2013111811;     // Requires Moodle 2.6.11 and above.
 $plugin->component = 'local_s3logs'; // Internal plugin name.
 $plugin->maturity  = MATURITY_ALPHA; // Not suitable for Production environments.

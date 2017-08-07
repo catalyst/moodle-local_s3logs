@@ -26,7 +26,7 @@ namespace local_s3logs\client;
 
 defined('MOODLE_INTERNAL') || die();
 
-require_once($CFG->dirroot . 'local/aws/sdk/aws-autoloader.php');
+require_once($CFG->dirroot . '/local/aws/sdk/aws-autoloader.php');
 
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
@@ -109,7 +109,7 @@ class s3_client implements object_client {
 
             $connection->success = false;
             $details = $this->get_exception_details($e);
-            $connection->message = get_string('settings:connectionfailure', 'local_s3logs') . $defails;
+            $connection->message = get_string('settings:connectionfailure', 'local_s3logs') . $details;
         }
 
         return $connection;

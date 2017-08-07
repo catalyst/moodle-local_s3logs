@@ -30,7 +30,7 @@ use local_s3logs\client\s3_client;
 
 require_once(__DIR__ . '/../../lib.php');
 
-class archive extends \core_task\scheduled_task {
+class archive extends \core\task\scheduled_task{
 
     /**
      * Get task name
