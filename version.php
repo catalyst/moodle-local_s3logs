@@ -24,8 +24,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2017062105;     // The current plugin version (Date: YYYYMMDDXX).
-$plugin->release   = 2017062105;     // Same as version.
+$plugin->version   = 2021042700;     // The current plugin version (Date: YYYYMMDDXX).
+$plugin->release   = 2021042700;     // Same as version.
 $plugin->requires  = 2013111811;     // Requires Moodle 2.6.11 and above.
 $plugin->component = 'local_s3logs'; // Internal plugin name.
 $plugin->maturity  = MATURITY_ALPHA; // Not suitable for Production environments.
