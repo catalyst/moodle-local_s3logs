@@ -136,7 +136,9 @@ class settings_form extends \moodleform {
 			'eu-central-1'   => 'eu-central-1',
             'eu-west-1'      => 'eu-west-1'
         );
-
+		$mform->addElement('checkbox', 'usesdkcreds', get_string('settings:aws:usesdkcreds', 'local_s3logs'));
+		$mform->addHelpButton('usesdkcreds', 'settings:aws:usesdkcreds', 'local_s3logs');
+		$mform->setType("usesdkcreds", PARAM_BOOL);
 		$mform->addElement('text', 'key', get_string('settings:key', 'local_s3logs'));
 		$mform->addHelpButton('key', 'settings:key', 'local_s3logs');
 		$mform->setType("key", PARAM_TEXT);
