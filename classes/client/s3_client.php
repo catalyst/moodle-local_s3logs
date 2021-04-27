@@ -54,7 +54,6 @@ class s3_client implements object_client {
     }
 
     public function __wakeup() {
-
         // Don't store credentials in the client itself as it will be serialised.
         $config = get_local_s3logs_config();
         $this->set_client($config);
@@ -62,14 +61,15 @@ class s3_client implements object_client {
     }
 
     public function set_client($config) {
-
-        $this->client = S3Client::factory(
-            array(
-                'credentials' => array('key' => $config->key, 'secret' => $config->secret),
-                'region'      => $config->region,
-                'version'     => AWS_API_VERSION
-            )
+        $settings = array(
+            'region'      => $config->region,
+            'version'     => AWS_API_VERSION
         );
+        $usesdkcreds = $config->usesdkcreds;
+        if (!$usesdkcreds) {
+            $settings['credentials'] = array('key' => $config->key, 'secret' => $config->secret);
+        }
+        $this->client = S3Client::factory($settings);
     }
 
     public function register_stream_wrapper() {

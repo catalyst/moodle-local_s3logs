@@ -52,6 +52,7 @@ function get_local_s3logs_config() {
     $config->maxtaskruntime = 60;
     $config->maximumage = 18;
     $config->rotate = 86400;
+    $config->usesdkcreds = false;
     $config->key = '';
     $config->secret = '';
     $config->bucket = '';
