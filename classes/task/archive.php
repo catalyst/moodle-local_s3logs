@@ -57,7 +57,7 @@ class archive extends \core\task\scheduled_task{
         $sql = "SELECT *
                   FROM {logstore_standard_log}
               ORDER BY timecreated ASC LIMIT 1000";
-        $logs = $DB->get_records_sql($sql);
+        $logs = $DB->get_recordset_sql($sql);
 
         // Package and push logs.
 
@@ -69,7 +69,7 @@ class archive extends \core\task\scheduled_task{
         foreach ($logs as $id => $data) {
 
             // Process the logs while timecreated is more than the threshold.
-            while ($data->timecreated > $threshold) {
+            if ($data->timecreated > $threshold) {
 
                 $columns = array();
                 $values = array();
@@ -83,13 +83,12 @@ class archive extends \core\task\scheduled_task{
                 $processedids[] = $id;
 
                 // Set the filename.
-                $currentfilename = date('Ymd', $timecreated);
+                $currentfilename = date('Ymds', $data->timecreated);
 
                 if (empty($filename) || $currentfilename == $filename) {
 
                     // Set the filename to be the current file name.
                     $filename = $currentfilename;
-
 
                     $datastring .= "INSERT INTO {logstore_standard_log} (" . implode(',', $columns) . ") values (" . implode(',', $values) . ");" . PHP_EOL;
 
@@ -110,11 +109,15 @@ class archive extends \core\task\scheduled_task{
             }
         }
 
-        // Delete the processed records from the log table.
-        $todelete = implode(',', $processedids);
+        $logs->close();
 
-        $truncatesql = "DELETE FROM {logstore_standard_log}
-        WHERE id IN ({$todelete})";
-        $DB->execute($truncatesql);
+        if (!empty($processedids)) {
+            // Delete the processed records from the log table.
+            $todelete = implode(',', $processedids);
+
+            $truncatesql = "DELETE FROM {logstore_standard_log}
+                            WHERE id IN ({$todelete})";
+            $DB->execute($truncatesql);
+        }
     }
 }

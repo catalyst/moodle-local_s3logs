@@ -46,6 +46,7 @@ class s3_client implements object_client {
 
         $this->bucket = $config->bucket;
         $this->set_client($config);
+        $this->client->registerStreamWrapper();
     }
 
     public function __sleep() {
