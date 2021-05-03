@@ -57,7 +57,7 @@ class archive extends \core\task\scheduled_task{
         $sql = "SELECT *
                   FROM {logstore_standard_log}
               ORDER BY timecreated ASC LIMIT 1000";
-        $logs = $DB->get_records_sql($sql);
+        $logs = $DB->get_recordset_sql($sql);
 
         // Package and push logs.
 
@@ -90,7 +90,6 @@ class archive extends \core\task\scheduled_task{
                     // Set the filename to be the current file name.
                     $filename = $currentfilename;
 
-
                     $datastring .= "INSERT INTO {logstore_standard_log} (" . implode(',', $columns) . ") values (" . implode(',', $values) . ");" . PHP_EOL;
 
                 } else if ($currentfilename != $filename) {
@@ -110,6 +109,7 @@ class archive extends \core\task\scheduled_task{
             }
         }
 
+        $logs->close();
 
         if (!empty($processedids)) {
             // Delete the processed records from the log table.
