@@ -83,7 +83,7 @@ class archive extends \core\task\scheduled_task{
                 $processedids[] = $id;
 
                 // Set the filename.
-                $currentfilename = date('Ymd', $timecreated);
+                $currentfilename = date('Ymds', $data->timecreated);
 
                 if (empty($filename) || $currentfilename == $filename) {
 
