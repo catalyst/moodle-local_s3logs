@@ -69,7 +69,7 @@ class archive extends \core\task\scheduled_task{
         foreach ($logs as $id => $data) {
 
             // Process the logs while timecreated is more than the threshold.
-            while ($data->timecreated > $threshold) {
+            if ($data->timecreated > $threshold) {
 
                 $columns = array();
                 $values = array();
