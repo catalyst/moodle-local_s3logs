@@ -110,11 +110,14 @@ class archive extends \core\task\scheduled_task{
             }
         }
 
-        // Delete the processed records from the log table.
-        $todelete = implode(',', $processedids);
 
-        $truncatesql = "DELETE FROM {logstore_standard_log}
-        WHERE id IN ({$todelete})";
-        $DB->execute($truncatesql);
+        if (!empty($processedids)) {
+            // Delete the processed records from the log table.
+            $todelete = implode(',', $processedids);
+
+            $truncatesql = "DELETE FROM {logstore_standard_log}
+                            WHERE id IN ({$todelete})";
+            $DB->execute($truncatesql);
+        }
     }
 }
