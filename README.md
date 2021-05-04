@@ -7,6 +7,11 @@ Some reasons for doing so:
 * The Moodle instance has been running for a long time and there is a requirement (regulatory or business) to keep logs around for a set period
 * The logs have grown to such an extent that getting data from them becomes tedious
 
+NOTE: This plugin should be considered deprecated, please use this plugin instead:
+
+https://github.com/catalyst/moodle-tool_s3logs
+
+
 ## Supported Moodle Versions
 This plugin currently supports Moodle:
 
